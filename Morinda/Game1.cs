@@ -39,22 +39,21 @@ namespace Morinda
 
             base.Initialize();
             EntityManager em = new EntityManager();
+            HealthSystem hs = new HealthSystem(em);
+
             Entity e1 = em.createEntity();
             Entity e2 = em.createEntity();
             Entity e3 = em.createEntity();
 
-            Component c1 = new HealthComponent();
-            Component c2 = new HealthComponent();
-            Component c3 = new HealthComponent();
+            Component c1 = new HealthComponent(100);
+            Component c2 = new HealthComponent(100);
+            Component c3 = new HealthComponent(100);
 
             em.addComponentToEntity(c1, e1);
             em.addComponentToEntity(c2, e1);
 
-            
-            foreach (Entity en in em.getEntitiesWithComponent<HealthComponent>())
-            {
-                Console.WriteLine(en);
-            }
+            hs.update(10.0f);
+            hs.printHealth();
         }
 
         /// <summary>

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Morinda
 {
+    /// <summary>
+    /// Base interface for Components
+    /// </summary>
     interface Component
     {
     }

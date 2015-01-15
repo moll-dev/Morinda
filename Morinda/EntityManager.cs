@@ -57,9 +57,22 @@ namespace Morinda
                     }
                 }
             }
-
             return entitiesWithComponent;
         }
+
+
+        public Component getComponentfromEntity<T>(Entity entity)
+        {
+            foreach(Component component in entityComponentMap[entity])
+            {
+                if(component.GetType() == typeof(T))
+                {
+                    return component;
+                }
+            }
+            return null;
+        }
+
 
         public List<Component> getComponents(Entity entity)
         {

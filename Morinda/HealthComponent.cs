@@ -7,12 +7,13 @@ namespace Morinda
 {
     class HealthComponent : Component
     {
-        int healthPoints;
-        bool isAlive;
+        public int healthPoints { get; set; }
+        public bool isAlive { get; set; }
 
-        public HealthComponent()
+        public HealthComponent(int GivenHealth)
         {
-
+            healthPoints = GivenHealth;
+            isAlive = true;
         }
     }
 }
