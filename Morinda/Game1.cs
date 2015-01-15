@@ -38,9 +38,23 @@ namespace Morinda
             //DUMB TEST CODE HERE
 
             base.Initialize();
+            EntityManager em = new EntityManager();
+            Entity e1 = em.createEntity();
+            Entity e2 = em.createEntity();
+            Entity e3 = em.createEntity();
 
+            Component c1 = new HealthComponent();
+            Component c2 = new HealthComponent();
+            Component c3 = new HealthComponent();
 
+            em.addComponentToEntity(c1, e1);
+            em.addComponentToEntity(c2, e1);
 
+            
+            foreach (Entity en in em.getEntitiesWithComponent<HealthComponent>())
+            {
+                Console.WriteLine(en);
+            }
         }
 
         /// <summary>

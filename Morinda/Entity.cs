@@ -36,5 +36,10 @@ namespace Morinda
         {
             id = Guid.NewGuid();
         }
+
+        public override string ToString()
+        {
+            return id.ToString();
+        }
     }
 }
