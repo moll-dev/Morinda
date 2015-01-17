@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace Morinda
 {
-    class RenderSystem
+    class RenderSystem : System
     {
         EntityManager manager { get; set; }
         SpriteBatch spriteBatch { get; set; }
@@ -39,7 +39,7 @@ namespace Morinda
             spriteBatch.Begin();
 
             //Draw sprite given stuff from renderComponent
-
+            spriteBatch.Draw(renderComponent.texture, new Rectangle(100, 100, renderComponent.texture.Width, renderComponent.texture.Height), Color.White);
 
             spriteBatch.End();
         }

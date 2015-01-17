@@ -43,6 +43,8 @@
     <Compile Include="HealthSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderComponent.cs" />
+    <Compile Include="RenderSystem.cs" />
     <Compile Include="System.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,8 +70,11 @@
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Content\" />
+    <None Include="Content\grass.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

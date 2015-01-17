@@ -19,6 +19,14 @@ namespace Morinda
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        double t = 0.0;
+        double dt = 0.01;
+
+        double currentTime = 0.0;
+        double accumulator = 0.0;
+
+        RenderSystem rs;
+
         public Game1()
             : base()
         {
@@ -38,12 +46,16 @@ namespace Morinda
             //DUMB TEST CODE HERE
 
             base.Initialize();
+
             EntityManager em = new EntityManager();
             HealthSystem hs = new HealthSystem(em);
+            rs = new RenderSystem(em, spriteBatch);
 
             Entity e1 = em.createEntity();
             Entity e2 = em.createEntity();
             Entity e3 = em.createEntity();
+
+            Component r1 = new RenderComponent(Content.Load<Texture2D>("grass"));
 
             Component c1 = new HealthComponent(100);
             Component c2 = new HealthComponent(100);
@@ -51,8 +63,8 @@ namespace Morinda
 
             em.addComponentToEntity(c1, e1);
             em.addComponentToEntity(c2, e1);
+            em.addComponentToEntity(r1, e1);
 
-            hs.update(10.0f);
             hs.printHealth();
         }
 
@@ -87,9 +99,26 @@ namespace Morinda
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
+
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            double newTime = gameTime.ElapsedGameTime.Milliseconds;
+            double frameTime = newTime - currentTime;
+           
+            currentTime = newTime;
+
+            accumulator += frameTime;
+
+            while( accumulator >= dt )
+            {
+
+                //Do physics shit here
+
+                t += dt;
+                accumulator -= dt;
+            }
+
         }
 
         /// <summary>
@@ -100,7 +129,7 @@ namespace Morinda
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            rs.update((float)dt);
 
             base.Draw(gameTime);
         }

@@ -15,9 +15,10 @@ namespace Morinda
     /// <summary>
     /// Holds data for rendering
     /// </summary>
-    class RenderComponent
+    class RenderComponent : Component
     {
-        Texture2D texture { get; set; }
+        public Texture2D texture { get; set; }
+        
         //Add type
         public RenderComponent(Texture2D givenTexture)
         {
