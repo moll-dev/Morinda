@@ -7,9 +7,9 @@ I know what you're thinking "Oh great another C# engine", yeah you're right, how
 Built on top of [Monogame 2.3](http://www.monogame.net/downloads/ "Monogame 2.3")
 
 #### TODO ####
-- [ ] Write Entity Manager
+- [x] Write Entity Manager
 - [ ] Write basic Systems (Health, AI, Movement, Rendering, ETC)
 - [ ] Develop Entity memory scheme
 
-[logo]: http://i.imgur.com/4qNSBnn.jpg "Logo Title Text 2"
+[logo]: http://i.imgur.com/4qNSBnn.jpg "Morinda Flower"
 -Lightweight ECS Engine written in C#
