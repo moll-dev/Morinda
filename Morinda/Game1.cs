@@ -65,6 +65,7 @@ namespace Morinda
             em.addComponentToEntity(c2, e1);
             em.addComponentToEntity(r1, e1);
 
+            hs.update(1.0f);
             hs.printHealth();
         }
 
@@ -128,10 +129,10 @@ namespace Morinda
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            base.Draw(gameTime);
             rs.update((float)dt);
 
-            base.Draw(gameTime);
+
         }
     }
 }
