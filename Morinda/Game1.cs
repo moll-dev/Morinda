@@ -25,8 +25,6 @@ namespace Morinda
         double currentTime = 0.0;
         double accumulator = 0.0;
 
-        RenderSystem rs;
-
         public Game1()
             : base()
         {
@@ -48,21 +46,20 @@ namespace Morinda
             base.Initialize();
 
             EntityManager em = new EntityManager();
+
             HealthSystem hs = new HealthSystem(em);
-            rs = new RenderSystem(em, spriteBatch);
+            RenderSystem rs = new RenderSystem(em, spriteBatch);
+            ControlSystem cs = new ControlSystem(em, Input)
 
             Entity e1 = em.createEntity();
-            Entity e2 = em.createEntity();
-            Entity e3 = em.createEntity();
 
-            Component r1 = new RenderComponent(Content.Load<Texture2D>("grass"));
 
+            Component r1 = new RenderComponent(Content.Load<Texture2D>("guy"));
+            Component t1 = new TransformComponent(new Vector2(100, 100), 1.0f, 0.0f);
             Component c1 = new HealthComponent(100);
-            Component c2 = new HealthComponent(100);
-            Component c3 = new HealthComponent(100);
 
             em.addComponentToEntity(c1, e1);
-            em.addComponentToEntity(c2, e1);
+            em.addComponentToEntity(t1, e1);
             em.addComponentToEntity(r1, e1);
 
             hs.update(1.0f);
@@ -102,7 +99,7 @@ namespace Morinda
 
             base.Update(gameTime);
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkSeaGreen);
 
             double newTime = gameTime.ElapsedGameTime.Milliseconds;
             double frameTime = newTime - currentTime;
@@ -128,11 +125,9 @@ namespace Morinda
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkSlateBlue);
             base.Draw(gameTime);
             rs.update((float)dt);
-
-
         }
     }
 }

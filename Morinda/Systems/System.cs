@@ -8,12 +8,18 @@ namespace Morinda
     /// <summary>
     /// System base class
     /// </summary>
-    interface System
+    class System
     {
+        public EntityManager manager;
         /// <summary>
         /// Updates the system given delta time (dt)
         /// </summary>
         /// <param name="dt"></param>
         void update(float dt);
+
+        public System(EntityManager givenManager)
+        {
+            manager = givenManager;
+        }
     }
 }

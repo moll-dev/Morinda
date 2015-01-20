@@ -7,11 +7,10 @@ namespace Morinda
 {
     class HealthSystem : System
     {
-        EntityManager manager;
 
-        public HealthSystem(EntityManager entityManager)
+        public HealthSystem(EntityManager entityManager) : base(entityManager)
         {
-            manager = entityManager;
+
         }
 
         public void update(float dt)

@@ -13,12 +13,10 @@ namespace Morinda
 {
     class RenderSystem : System
     {
-        EntityManager manager { get; set; }
-        SpriteBatch spriteBatch { get; set; }
+        public SpriteBatch spriteBatch { get; set; }
         
-        public RenderSystem(EntityManager givenManager, SpriteBatch givenSpriteBatch)
+        public override RenderSystem(EntityManager givenManager, SpriteBatch givenSpriteBatch) : base(givenManager)
         {
-            manager = givenManager;
             spriteBatch = givenSpriteBatch;
         }
 

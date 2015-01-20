@@ -36,6 +36,7 @@ namespace Morinda
 
         public void addComponentToEntity(Component component, Entity entity)
         {
+            //addComponent(Component component)toEntity(Entity entity)
             entityComponentMap[entity].Add(component);      
         }
 
