@@ -25,6 +25,10 @@ namespace Morinda
         double currentTime = 0.0;
         double accumulator = 0.0;
 
+        RenderSystem rs;
+        
+
+
         public Game1()
             : base()
         {
@@ -48,8 +52,8 @@ namespace Morinda
             EntityManager em = new EntityManager();
 
             HealthSystem hs = new HealthSystem(em);
-            RenderSystem rs = new RenderSystem(em, spriteBatch);
-            ControlSystem cs = new ControlSystem(em, Input)
+            rs = new RenderSystem(em, spriteBatch);
+            ControlSystem cs = new ControlSystem(em);
 
             Entity e1 = em.createEntity();
 
@@ -57,10 +61,13 @@ namespace Morinda
             Component r1 = new RenderComponent(Content.Load<Texture2D>("guy"));
             Component t1 = new TransformComponent(new Vector2(100, 100), 1.0f, 0.0f);
             Component c1 = new HealthComponent(100);
+            Component i1 = new InputComponent();
 
             em.addComponentToEntity(c1, e1);
             em.addComponentToEntity(t1, e1);
             em.addComponentToEntity(r1, e1);
+            em.addComponentToEntity(i1, e1);
+
 
             hs.update(1.0f);
             hs.printHealth();

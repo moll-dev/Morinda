@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
 
-namespace Morinda.Systems
+namespace Morinda
 {
     class ControlSystem : System
     {
@@ -19,6 +19,11 @@ namespace Morinda.Systems
         public ControlSystem(EntityManager givenManager) : base(givenManager)
         {
            
+        }
+
+        public override void update(float dt)
+        {
+            Console.WriteLine("hey there");
         }
 
         public void updateState(KeyboardState keyState, MouseState mouseState)
