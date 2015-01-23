@@ -12,23 +12,14 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace Morinda
 {
-    class ControlSystem : System
+    class InputComponent : Component
     {
-        Input input;
+        public Keys[] keysPressed;
 
-        public ControlSystem(EntityManager givenManager) : base(givenManager)
+        public InputComponent()
         {
-           
-        }
-
-        public override void update(float dt)
-        {
-            Console.WriteLine("hey there");
-        }
-
-        public void updateState(KeyboardState keyState, MouseState mouseState)
-        {
-
+            //TODO put specific sources of input in this component. 
+            //The keys structure is the choke point for control!
         }
     }
 }

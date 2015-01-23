@@ -62,16 +62,16 @@ namespace Morinda
         }
 
 
-        public Component getComponentfromEntity<T>(Entity entity)
+        public T getComponentfromEntity<T>(Entity entity)
         {
             foreach(Component component in entityComponentMap[entity])
             {
                 if(component.GetType() == typeof(T))
                 {
-                    return component;
+                    return (T)component;
                 }
             }
-            return null;
+            return default(T);
         }
 
 

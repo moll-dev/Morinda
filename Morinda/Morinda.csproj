@@ -35,17 +35,19 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
     <Compile Include="Component\Component.cs" />
     <Compile Include="Component\InputComponent.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="Entity\EntityManager.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Component\HealthComponent.cs" />
-    <Compile Include="System\ControlSystem.cs" />
+    <Compile Include="System\ActionSystem.cs" />
     <Compile Include="System\HealthSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Component\RenderComponent.cs" />
+    <Compile Include="System\InputSystem.cs" />
     <Compile Include="System\RenderSystem.cs" />
     <Compile Include="System\System.cs" />
     <Compile Include="Component\TransformComponent.cs" />
@@ -73,7 +75,9 @@
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Command\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Content\grass.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

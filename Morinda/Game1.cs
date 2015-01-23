@@ -26,7 +26,7 @@ namespace Morinda
         double accumulator = 0.0;
 
         RenderSystem rs;
-        
+        InputSystem ks;
 
 
         public Game1()
@@ -53,13 +53,14 @@ namespace Morinda
 
             HealthSystem hs = new HealthSystem(em);
             rs = new RenderSystem(em, spriteBatch);
-            ControlSystem cs = new ControlSystem(em);
+            ks = new InputSystem(em);
+            ActionSystem cs = new ActionSystem(em);
 
             Entity e1 = em.createEntity();
 
 
             Component r1 = new RenderComponent(Content.Load<Texture2D>("guy"));
-            Component t1 = new TransformComponent(new Vector2(100, 100), 1.0f, 0.0f);
+            Component t1 = new TransformComponent(new Vector2(200, 100), 1.0f, 0.0f);
             Component c1 = new HealthComponent(100);
             Component i1 = new InputComponent();
 
@@ -68,9 +69,6 @@ namespace Morinda
             em.addComponentToEntity(r1, e1);
             em.addComponentToEntity(i1, e1);
 
-
-            hs.update(1.0f);
-            hs.printHealth();
         }
 
         /// <summary>
@@ -105,6 +103,17 @@ namespace Morinda
                 Exit();
 
             base.Update(gameTime);
+
+            //foreach (Keys key in Keyboard.GetState().GetPressedKeys())
+            //{
+            //    Console.Write(key);
+            //}
+            //Console.WriteLine();
+
+
+            ks.update((float) dt);
+
+
 
             GraphicsDevice.Clear(Color.DarkSeaGreen);
 

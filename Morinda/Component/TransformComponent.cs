@@ -13,9 +13,9 @@ namespace Morinda
 {
     class TransformComponent : Component
     {
-        float rotation;
-        float scale;
-        Vector2 position;
+        public float rotation;
+        public float scale;
+        public Vector2 position;
 
         public TransformComponent(Vector2 givenPos, float givenScale, float givenRotation)
         {

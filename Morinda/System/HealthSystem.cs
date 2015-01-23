@@ -19,7 +19,7 @@ namespace Morinda
 
             foreach (Entity entity in entities)
             {
-                HealthComponent healthComponent = (HealthComponent) manager.getComponentfromEntity<HealthComponent>(entity);
+                HealthComponent healthComponent = manager.getComponentfromEntity<HealthComponent>(entity);
                 healthComponent.healthPoints -= 40;
 
                 if (healthComponent.healthPoints <= 0)

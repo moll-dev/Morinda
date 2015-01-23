@@ -15,7 +15,7 @@ namespace Morinda
     {
         public SpriteBatch spriteBatch { get; set; }
         
-        public override RenderSystem(EntityManager givenManager, SpriteBatch givenSpriteBatch) : base(givenManager)
+        public RenderSystem(EntityManager givenManager, SpriteBatch givenSpriteBatch) : base(givenManager)
         {
             spriteBatch = givenSpriteBatch;
         }
@@ -27,17 +27,19 @@ namespace Morinda
 
             foreach (Entity entity in entities)
             {
-                RenderComponent renderComponent = (RenderComponent) manager.getComponentfromEntity<RenderComponent>(entity);
-                draw(renderComponent);
+                RenderComponent renderComponent = manager.getComponentfromEntity<RenderComponent>(entity);
+                TransformComponent transformComponent = manager.getComponentfromEntity<TransformComponent>(entity);
+
+                draw(renderComponent, transformComponent);
             }
         }
 
-        private void draw(RenderComponent renderComponent)
+        private void draw(RenderComponent rc, TransformComponent tc)
         {
             spriteBatch.Begin();
 
             //Draw sprite given stuff from renderComponent
-            spriteBatch.Draw(renderComponent.texture, new Rectangle(100, 100, renderComponent.texture.Width, renderComponent.texture.Height), Color.White);
+            spriteBatch.Draw(rc.texture, new Rectangle((int) tc.position.X, (int) tc.position.X, rc.texture.Width, rc.texture.Height), Color.White);
 
             spriteBatch.End();
         }
