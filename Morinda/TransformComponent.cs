@@ -10,19 +10,18 @@ using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
 
+
 namespace Morinda
 {
-    class InputComponent : Component
+    class TransformComponent : Component
     {
-        public Keys[] keysPressed;
-        public Dictionary<Keys, Command> keyMap;
+        public float rotation {get; set;}
+        public Vector2 position { get; set; }
 
-        public InputComponent(Dictionary<Keys, Command> givenKeyMap)
+        public TransformComponent(Vector2 givenPosition, float givenRotation)
         {
-            keyMap = givenKeyMap;
-
-            //TODO put specific sources of input in this component. 
-            //The keys structure is the choke point for control!
+            position = givenPosition;
+            rotation = givenRotation;
         }
     }
 }

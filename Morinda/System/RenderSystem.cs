@@ -39,8 +39,7 @@ namespace Morinda
             spriteBatch.Begin();
 
             //Draw sprite given stuff from renderComponent
-            spriteBatch.Draw(rc.texture, new Rectangle((int) tc.position.X, (int) tc.position.X, rc.texture.Width, rc.texture.Height), Color.White);
-
+            spriteBatch.Draw(rc.texture, new Rectangle((int) tc.position.X, (int) tc.position.Y, rc.texture.Width, rc.texture.Height), Color.White);
             spriteBatch.End();
         }
     }

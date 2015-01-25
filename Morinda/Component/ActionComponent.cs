@@ -9,20 +9,15 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
-
 namespace Morinda
 {
-    class InputComponent : Component
+    class ActionComponent
     {
-        public Keys[] keysPressed;
-        public Dictionary<Keys, Command> keyMap;
+        public Dictionary<Keys, Command> actionMap;
 
-        public InputComponent(Dictionary<Keys, Command> givenKeyMap)
+        public ActionComponent(Dictionary<Keys, Command> givenActionMap)
         {
-            keyMap = givenKeyMap;
-
-            //TODO put specific sources of input in this component. 
-            //The keys structure is the choke point for control!
+            actionMap = givenActionMap;
         }
     }
 }

@@ -34,7 +34,13 @@ namespace Morinda
 
             foreach (Entity entity in entities)
             {
+                ActionComponent actionComponent = manager.getComponentfromEntity<ActionComponent>(entity);
                 InputComponent inputComponent = manager.getComponentfromEntity<InputComponent>(entity);
+
+                if (inputComponent.keysPressed.Length != 0)
+                {
+                    inputComponent.keyMap[inputComponent.keysPressed[0]].execute(entity);
+                }
                 
                 
             }

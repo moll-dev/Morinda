@@ -25,9 +25,14 @@ namespace Morinda
         double currentTime = 0.0;
         double accumulator = 0.0;
 
+        EntityManager em;
         RenderSystem rs;
         InputSystem ks;
+        ActionSystem cs;
+        Entity e1;
 
+        Command walkCommand;
+        Dictionary<Keys, Command> keymap;
 
         public Game1()
             : base()
@@ -49,20 +54,24 @@ namespace Morinda
 
             base.Initialize();
 
-            EntityManager em = new EntityManager();
+            em = new EntityManager();
 
             HealthSystem hs = new HealthSystem(em);
             rs = new RenderSystem(em, spriteBatch);
             ks = new InputSystem(em);
-            ActionSystem cs = new ActionSystem(em);
+            cs = new ActionSystem(em);
+            
+            e1 = em.createEntity();
 
-            Entity e1 = em.createEntity();
+            walkCommand = new WalkCommand(em);
+            keymap = new Dictionary<Keys, Command>();
+            keymap.Add(Keys.W, walkCommand);
 
 
             Component r1 = new RenderComponent(Content.Load<Texture2D>("guy"));
             Component t1 = new TransformComponent(new Vector2(200, 100), 1.0f, 0.0f);
             Component c1 = new HealthComponent(100);
-            Component i1 = new InputComponent();
+            Component i1 = new InputComponent(keymap);
 
             em.addComponentToEntity(c1, e1);
             em.addComponentToEntity(t1, e1);
@@ -110,9 +119,25 @@ namespace Morinda
             //}
             //Console.WriteLine();
 
+            Keys[] keys = Keyboard.GetState().GetPressedKeys();
 
-            ks.update((float) dt);
+            foreach (Keys key in keys)
+            {
+                Console.Write(key.ToString());
+                /*
+                if (keymap.ContainsKey(key))
+                {
+                    Console.WriteLine(key);
+                    keymap[key].execute(e1);
+                }
+                 */
+            }
 
+            if (keys.Length > 0)
+                Console.WriteLine();
+
+            //ks.update((float) dt);
+            //cs.update((float) dt);
 
 
             GraphicsDevice.Clear(Color.DarkSeaGreen);
