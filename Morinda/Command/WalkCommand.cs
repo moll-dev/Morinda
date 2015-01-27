@@ -22,7 +22,7 @@ namespace Morinda
 
         public void execute(Entity entity)
         {
-            Console.Write("Updated ");
+            //Console.Write("Updated ");
             TransformComponent tc = entityManager.getComponentfromEntity<TransformComponent>(entity);
             tc.position = new Vector2(tc.position.X, tc.position.Y + 5);
 

@@ -133,11 +133,11 @@ namespace Morinda
                  */
             }
 
-            if (keys.Length > 0)
-                Console.WriteLine();
+            //if (keys.Length > 0)
+            //    Console.WriteLine();
 
-            //ks.update((float) dt);
-            //cs.update((float) dt);
+            ks.update((float) dt);
+            cs.update((float) dt);
 
 
             GraphicsDevice.Clear(Color.DarkSeaGreen);

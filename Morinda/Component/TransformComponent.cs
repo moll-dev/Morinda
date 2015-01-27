@@ -14,14 +14,20 @@ namespace Morinda
     class TransformComponent : Component
     {
         public float rotation;
+        //public enum Direction { N, NE, E, SE, S, SW, W, NW };
         public float scale;
         public Vector2 position;
+        public int layer;
+        public SpriteEffects effect;
 
         public TransformComponent(Vector2 givenPos, float givenScale, float givenRotation)
         {
             position = givenPos;
             scale = givenScale;
             rotation = givenRotation;
+            //direction = Direction.E;
+            layer = 0;
+            effect = SpriteEffects.None;
         }
     }
 }

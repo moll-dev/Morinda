@@ -38,8 +38,16 @@ namespace Morinda
         {
             spriteBatch.Begin();
 
-            //Draw sprite given stuff from renderComponent
-            spriteBatch.Draw(rc.texture, new Rectangle((int) tc.position.X, (int) tc.position.Y, rc.texture.Width, rc.texture.Height), Color.White);
+            //Calculate origin and rectangle
+            Vector2 texture_origin = new Vector2(2,2);
+            Rectangle texture_map = new Rectangle(0, 0, rc.texture.Width, rc.texture.Height);
+
+            //Draw stuff using render and transform component
+           
+            spriteBatch.Draw(rc.texture, tc.position, texture_map, Color.White, tc.rotation, texture_origin, tc.scale, tc.effect, tc.layer);
+
+            //SpriteBatch.Draw (rc.texture, origin, rect, Color.Wheat, (float) tc.rotation, origin, (float) tc.scale, tc.effect, (float) tc.layer);
+            //spriteBatch.Draw(rc.texture, new Rectangle((int) tc.position.X, (int) tc.position.Y, rc.texture.Width, rc.texture.Height), Color.White);
             spriteBatch.End();
         }
     }

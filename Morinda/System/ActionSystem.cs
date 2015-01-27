@@ -25,7 +25,7 @@ namespace Morinda
 
         public void update(float dt)
         {
-            Console.WriteLine("hey there");
+            //Console.WriteLine("hey there");
 
             /*
              *  Get respective input from sources either Player, AI, or Network
