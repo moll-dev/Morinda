@@ -13,6 +13,7 @@ namespace Morinda
 {
     class RenderSystem : System
     {
+        public float time;
         public SpriteBatch spriteBatch { get; set; }
         
         public RenderSystem(EntityManager givenManager, SpriteBatch givenSpriteBatch) : base(givenManager)
@@ -27,9 +28,11 @@ namespace Morinda
 
             foreach (Entity entity in entities)
             {
+                time += dt;
                 RenderComponent renderComponent = manager.getComponentfromEntity<RenderComponent>(entity);
                 TransformComponent transformComponent = manager.getComponentfromEntity<TransformComponent>(entity);
-
+                transformComponent.scale = 2     * (float) Math.Sin(time);
+                transformComponent.rotation += 0.05f;
                 draw(renderComponent, transformComponent);
             }
         }
@@ -39,9 +42,9 @@ namespace Morinda
             spriteBatch.Begin();
 
             //Calculate origin and rectangle
-            Vector2 texture_origin = new Vector2(2,2);
+            Vector2 texture_origin = new Vector2(rc.texture.Width/2, rc.texture.Height/2);
             Rectangle texture_map = new Rectangle(0, 0, rc.texture.Width, rc.texture.Height);
-
+            
             //Draw stuff using render and transform component
            
             spriteBatch.Draw(rc.texture, tc.position, texture_map, Color.White, tc.rotation, texture_origin, tc.scale, tc.effect, tc.layer);
